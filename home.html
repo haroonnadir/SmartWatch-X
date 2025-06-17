@@ -1,0 +1,153 @@
+<!-- bc220416172 Mehmoona Habib -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartWatch X</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        .product-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .product-image {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .product-image:hover {
+            transform: scale(1.1);
+        }
+        
+        .product-description {
+            text-align: center;
+            color: #555;
+        }
+        
+        .buy-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .buy-button:hover {
+            background-color: #45a049;
+        }
+        
+        .theme-selector {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .theme-apply {
+            padding: 5px 10px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .message-area {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-height: 20px;
+        }
+        
+        /* Theme colors */
+        .light {
+            background-color: #ffffff;
+        }
+        
+        .dark {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        
+        .dark h1, .dark .product-description {
+            color: #ffffff;
+        }
+        
+        .blue {
+            background-color: #e6f2ff;
+        }
+    </style>
+</head>
+<body class="light">
+    <div class="product-container">
+        <h1>SmartWatch X</h1>
+        <img id="productImage" class="product-image" src="https://zerolifestyle.co/cdn/shop/files/Luna-_1_6.webp?v=1734558268&width=700" alt="SmartWatch X">
+        <p class="product-description">The latest SmartWatch X with fitness tracking, heart monitoring, and sleek design.</p>
+        <button class="buy-button" onclick="buyNow()">Buy Now</button>
+        
+        <div class="theme-selector">
+            <select id="themeSelect">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="blue">Blue</option>
+            </select>
+            <button class="theme-apply" onclick="applyTheme()">Apply Theme</button>
+        </div>
+        
+        <div id="messageArea" class="message-area"></div>
+    </div>
+
+    <script>
+        function buyNow() {
+            alert("Thank you for buying SmartWatch X!");
+            document.getElementById("messageArea").textContent = "You clicked Buy Now, Thank You.";
+        }
+        
+        function applyTheme() {
+            const themeSelect = document.getElementById("themeSelect");
+            const selectedTheme = themeSelect.value;
+            
+            // Remove all theme classes
+            document.body.classList.remove("light", "dark", "blue");
+            // Add the selected theme class
+            document.body.classList.add(selectedTheme);
+            
+            document.getElementById("messageArea").textContent = `${selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)} theme has been applied.`;
+        }
+        
+        const productImage = document.getElementById("productImage");
+        const originalImage = "https://zerolifestyle.co/cdn/shop/files/Luna-_1_6.webp?v=1734558268&width=700";
+        const hoverImage = "https://zerolifestyle.co/cdn/shop/files/Jewel_2_2288ba30-27d5-4139-9966-91b4c0f537ae.webp?v=1744983680&width=700";
+        
+        productImage.addEventListener("mouseover", function() {
+            this.src = hoverImage;
+        });
+        
+        productImage.addEventListener("mouseout", function() {
+            this.src = originalImage;
+        });
+    </script>
+</body>
+</html>
